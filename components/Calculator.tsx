@@ -336,103 +336,109 @@ export default function Calculator({ setCalculationData }: CalculatorProps) {
   // -----------------------
 
   return (
-    <div className="container mx-auto p-4">
-      {/* Big Heading */}
-      <h1 className="text-4xl font-bold bg-gradient-to-r from-[#001528] to-[#6b98c6] bg-clip-text text-transparent text-center mb-8">
-        GPA/CGPA Calculator
-      </h1>
+    <div className="w-full overflow-x-hidden">
+      <div className="container mx-auto px-4 py-4">
+        {/* Big Heading */}
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#001528] to-[#6b98c6] bg-clip-text text-transparent text-center mb-8">
+          GPA/CGPA Calculator
+        </h1>
 
-      {semesters.map((semester, idx) => (
-        <div
-          key={semester.id}
-          className="mb-6 p-4 border rounded dark:border-gray-700"
-        >
-          <div className="flex justify-between items-center mb-2">
-            <h2 className="text-xl font-semibold">
-              {semester.name}{" "}
-              {semesterGPAs[idx] && (
-                <span className="text-sm text-gray-500 ml-2">
-                  (GPA: {semesterGPAs[idx].gpa})
-                </span>
-              )}
-            </h2>
-            <Button
-              variant="destructive"
-              onClick={() => removeSemester(semester.id)}
-              size="lg"
-            >
-              Remove Semester
-            </Button>
-          </div>
-          <Semester semester={semester} updateSemester={updateSemester} />
-        </div>
-      ))}
-
-      <div className="flex flex-wrap justify-center items-center gap-6 mb-4">
-        <Button onClick={addSemester} variant="outline" size="lg">
-          Add Semester
-        </Button>
-        <Button
-          onClick={handleCalculate}
-          variant="outline"
-          size="lg"
-          disabled={!valid}
-          className={`${!valid ? "opacity-50 cursor-not-allowed" : ""}`}
-        >
-          Calculate GPA/CGPA
-        </Button>
-        <Button onClick={resetCalculations} variant="outline" size="lg">
-          Reset
-        </Button>
-      </div>
-
-      {result && (
-        <div className="mt-4 p-4 border rounded dark:border-gray-700 text-center">
-          <h3 className="text-2xl font-bold mb-2">Overall Results</h3>
-          <p className="text-xl">CGPA: {result.cgpa}</p>
-          <div className="mt-4">
-            <Button
-              onClick={handleSaveCalculation}
-              variant="outline"
-              size="lg"
-              disabled={isSaving}
-            >
-              {isSaving ? "Saving..." : "Save Calculation"}
-            </Button>
-          </div>
-        </div>
-      )}
-
-      <div className="mt-8">
-        <h3 className="text-2xl font-bold mb-4">Saved Calculations History</h3>
-        {savedCalculations.length === 0 ? (
-          <p>No saved calculations found.</p>
-        ) : (
-          <div className="space-y-4">
-            {savedCalculations.map((calc) => (
-              <div key={calc.id} className="p-4 border rounded mb-2">
-                <p>
-                  <strong>CGPA:</strong> {calc.result.cgpa}
-                </p>
-                <p>
-                  <strong>Saved On:</strong>{" "}
-                  {new Date(calc.savedAt).toLocaleString()}
-                </p>
+        {semesters.map((semester, idx) => (
+          <div
+            key={semester.id}
+            className="mb-6 p-4 border rounded dark:border-gray-700"
+          >
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
+              <h2 className="text-xl font-semibold">
+                {semester.name}{" "}
+                {semesterGPAs[idx] && (
+                  <span className="text-sm text-gray-500 ml-2">
+                    (GPA: {semesterGPAs[idx].gpa})
+                  </span>
+                )}
+              </h2>
+              <div className="mt-2 md:mt-0">
+                <Button
+                  variant="destructive"
+                  onClick={() => removeSemester(semester.id)}
+                  size="lg"
+                >
+                  Remove Semester
+                </Button>
               </div>
-            ))}
+            </div>
+            <Semester semester={semester} updateSemester={updateSemester} />
+          </div>
+        ))}
+
+        <div className="flex flex-wrap justify-center items-center gap-6 mb-4">
+          <Button onClick={addSemester} variant="outline" size="lg">
+            Add Semester
+          </Button>
+          <Button
+            onClick={handleCalculate}
+            variant="outline"
+            size="lg"
+            disabled={!valid}
+            className={`${!valid ? "opacity-50 cursor-not-allowed" : ""}`}
+          >
+            Calculate GPA/CGPA
+          </Button>
+          <Button onClick={resetCalculations} variant="outline" size="lg">
+            Reset
+          </Button>
+        </div>
+
+        {result && (
+          <div className="mt-4 p-4 border rounded dark:border-gray-700 text-center">
+            <h3 className="text-2xl font-bold mb-2">Overall Results</h3>
+            <p className="text-xl">CGPA: {result.cgpa}</p>
+            <div className="mt-4">
+              <Button
+                onClick={handleSaveCalculation}
+                variant="outline"
+                size="lg"
+                disabled={isSaving}
+              >
+                {isSaving ? "Saving..." : "Save Calculation"}
+              </Button>
+            </div>
           </div>
         )}
-        {savedCalculations.length > 0 && (
-          <div className="flex justify-end mt-4">
-            <Button
-              onClick={handleClearHistory}
-              variant="destructive"
-              size="lg"
-            >
-              Clear History
-            </Button>
-          </div>
-        )}
+
+        <div className="mt-8">
+          <h3 className="text-2xl font-bold mb-4">
+            Saved Calculations History
+          </h3>
+          {savedCalculations.length === 0 ? (
+            <p>No saved calculations found.</p>
+          ) : (
+            <div className="space-y-4">
+              {savedCalculations.map((calc) => (
+                <div key={calc.id} className="p-4 border rounded mb-2">
+                  <p>
+                    <strong>CGPA:</strong> {calc.result.cgpa}
+                  </p>
+                  <p>
+                    <strong>Saved On:</strong>{" "}
+                    {new Date(calc.savedAt).toLocaleString()}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+          {savedCalculations.length > 0 && (
+            <div className="flex justify-end mt-4">
+              <Button
+                onClick={handleClearHistory}
+                variant="destructive"
+                size="lg"
+              >
+                Clear History
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
