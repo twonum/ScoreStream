@@ -7,7 +7,7 @@ import ProgressBar from "../components/ProgressBar";
 import Head from "next/head";
 
 export const metadata = {
-  title: "UET GPA Calculator - Modern GPA & CGPA Calculator for UET Lahore",
+  title: "ScoreStream - UET GPA Calculator",
   description:
     "Calculate your GPA and CGPA easily with our modern, responsive, and SEO-friendly application designed exclusively for UET Lahore students.",
 };
