@@ -196,6 +196,7 @@ export default function Dashboard() {
           onClick={() => router.push("/sign-in")}
           variant="outline"
           size="lg"
+          className="text-black border-black hover:bg-black hover:text-white"
         >
           Sign In
         </Button>
