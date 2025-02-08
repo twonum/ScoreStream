@@ -243,6 +243,7 @@ export default function Dashboard() {
               onClick={() => setShowHistory((prev) => !prev)}
               variant="outline"
               size="lg"
+              className="text-black border-black hover:bg-black hover:text-white"
             >
               {showHistory ? "Hide History" : "View Calculation History"}
             </Button>

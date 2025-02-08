@@ -16,7 +16,7 @@ export default function NavBar() {
           href="/"
           className="text-3xl font-extrabold text-white hover:bg-gradient-to-r hover:from-gray-500 hover:via-gray-400 hover:to-gray-200 hover:bg-clip-text hover:text-transparent transition duration-300 cursor-pointer"
         >
-          ScoreStream (uetian)
+          ScoreStream
         </Link>
       </div>
 
