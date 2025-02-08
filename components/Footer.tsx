@@ -4,13 +4,14 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col items-center mt-24 pb-8 space-y-6 text-gray-400">
+    <footer className="w-full px-4 overflow-x-hidden flex flex-col items-center mt-12 md:mt-24 pb-8 space-y-6 text-gray-400">
       {/* Separator */}
       <div className="w-full max-w-4xl mx-auto">
         <div className="w-full h-px bg-gradient-to-r from-gray-600 to-gray-400 mb-8"></div>
       </div>
 
-      <div className="flex gap-6">
+      {/* Social Icons */}
+      <div className="flex flex-wrap justify-center gap-6">
         <a
           href="https://taha-saleem.onrender.com"
           target="_blank"
@@ -52,11 +53,13 @@ export default function Footer() {
         </a>
       </div>
 
+      {/* Copyright & Links */}
       <p className="text-sm">&copy; 2024 ScoreStream. All rights reserved.</p>
       <Link href="/terms" className="text-sm hover:underline">
         Terms and Conditions
       </Link>
 
+      {/* Designer Credit */}
       <div className="text-center mt-6 text-lg font-semibold">
         <p className="design-credit text-transparent bg-clip-text bg-gradient-to-r from-gray-800 via-gray-600 to-gray-400 text-2xl">
           Designed by{" "}
