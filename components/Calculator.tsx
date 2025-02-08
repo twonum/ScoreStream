@@ -338,7 +338,7 @@ export default function Calculator({ setCalculationData }: CalculatorProps) {
   return (
     <div className="container mx-auto p-4">
       {/* Big Heading */}
-      <h1 className="text-4xl font-bold text-[#adfa1d] text-center mb-8">
+      <h1 className="text-4xl font-bold bg-gradient-to-r from-[#001528] to-[#6b98c6] bg-clip-text text-transparent text-center mb-8">
         GPA/CGPA Calculator
       </h1>
 

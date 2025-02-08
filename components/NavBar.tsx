@@ -12,10 +12,11 @@ export default function NavBar() {
     <nav className="sticky top-0 z-50 flex justify-between items-center p-4 bg-gradient-to-r from-black via-gray-900 to-black shadow-lg border-b border-gray-800">
       {/* Logo */}
       <div className="flex items-center space-x-4">
-        <Link href="/">
-          <span className="text-3xl font-extrabold text-white hover:text-[#adfa1d] transition duration-300">
-            ScoreStream (uetian)
-          </span>
+        <Link
+          href="/"
+          className="text-3xl font-extrabold text-white hover:bg-gradient-to-r hover:from-gray-500 hover:via-gray-400 hover:to-gray-200 hover:bg-clip-text hover:text-transparent transition duration-300 cursor-pointer"
+        >
+          ScoreStream (uetian)
         </Link>
       </div>
 
@@ -23,19 +24,19 @@ export default function NavBar() {
       <div className="hidden md:flex items-center space-x-8 text-lg">
         <Link
           href="/dashboard"
-          className="text-white hover:text-[#adfa1d] hover:underline transition duration-300"
+          className="text-white hover:bg-gradient-to-r hover:from-[#3b82f6] hover:via-[#60a5fa] hover:to-[#3b82f6] hover:bg-clip-text hover:text-transparent hover:underline transition duration-300"
         >
           Dashboard
         </Link>
         <Link
           href="/about"
-          className="text-white hover:text-[#adfa1d] hover:underline transition duration-300"
+          className="text-white hover:bg-gradient-to-r hover:from-[#3b82f6] hover:via-[#60a5fa] hover:to-[#3b82f6] hover:bg-clip-text hover:text-transparent hover:underline transition duration-300"
         >
           About
         </Link>
         <Link
           href="/contact"
-          className="text-white hover:text-[#adfa1d] hover:underline transition duration-300"
+          className="text-white hover:bg-gradient-to-r hover:from-[#3b82f6] hover:via-[#60a5fa] hover:to-[#3b82f6] hover:bg-clip-text hover:text-transparent hover:underline transition duration-300"
         >
           Contact
         </Link>
@@ -43,7 +44,7 @@ export default function NavBar() {
           <UserButton />
         ) : (
           <SignInButton>
-            <button className="px-5 py-2 border border-[#adfa1d] text-white rounded-lg hover:bg-[#adfa1d] hover:text-black transition duration-300">
+            <button className="px-5 py-2 border border-[#3b82f6] text-white rounded-lg hover:bg-[#3b82f6] hover:text-black transition duration-300">
               Sign In
             </button>
           </SignInButton>
@@ -70,21 +71,21 @@ export default function NavBar() {
           <Link
             href="/dashboard"
             onClick={() => setIsMenuOpen(false)}
-            className="text-white hover:text-[#adfa1d] hover:underline transition duration-300"
+            className="text-white hover:text-[#3b82f6] hover:underline transition duration-300"
           >
             Dashboard
           </Link>
           <Link
             href="/about"
             onClick={() => setIsMenuOpen(false)}
-            className="text-white hover:text-[#adfa1d] hover:underline transition duration-300"
+            className="text-white hover:text-[#3b82f6] hover:underline transition duration-300"
           >
             About
           </Link>
           <Link
             href="/contact"
             onClick={() => setIsMenuOpen(false)}
-            className="text-white hover:text-[#adfa1d] hover:underline transition duration-300"
+            className="text-white hover:text-[#3b82f6] hover:underline transition duration-300"
           >
             Contact
           </Link>
@@ -94,7 +95,7 @@ export default function NavBar() {
             <SignInButton>
               <button
                 onClick={() => setIsMenuOpen(false)}
-                className="px-5 py-2 border border-[#adfa1d] text-white rounded-lg hover:bg-[#adfa1d] hover:text-black transition duration-300"
+                className="px-5 py-2 border border-[#3b82f6] text-white rounded-lg hover:bg-[#3b82f6] hover:text-black transition duration-300"
               >
                 Sign In
               </button>
