@@ -11,6 +11,10 @@ export default function About() {
             About - ScoreStream: Ultimate UET GPA &amp; CGPA Calculator
           </title>
           <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          <meta
             name="description"
             content="Discover ScoreStream, the cutting-edge GPA &amp; CGPA calculator exclusively designed for University of Engineering and Technology Lahore students. Compute your grades in real time with secure data handling and modern analytics."
           />
@@ -23,14 +27,14 @@ export default function About() {
         <div className="container mx-auto p-6">
           <BackButton />
           <div className="flex flex-col items-center justify-center mt-16">
-            <div className="text-center">
+            <div className="text-center px-4">
               {/* Header */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-wide">
                 Discover the Ultimate UET GPA &amp; CGPA Calculator ScoreStream
               </h1>
 
               {/* Introduction */}
-              <p className="text-lg max-w-4xl mb-8 leading-relaxed">
+              <p className="text-lg max-w-4xl mb-8 leading-relaxed mx-auto">
                 Welcome to a cutting-edge academic tool exclusively designed for
                 students of{" "}
                 <strong>University of Engineering and Technology Lahore</strong>
@@ -40,11 +44,11 @@ export default function About() {
               </p>
 
               {/* Features */}
-              <div className="max-w-4xl text-white space-y-6">
+              <div className="max-w-4xl text-white space-y-6 mx-auto">
                 <h2 className="text-2xl font-semibold border-b border-white pb-2 mb-4">
                   Key Features
                 </h2>
-                <ul className="list-disc list-inside space-y-3 text-left inline-block">
+                <ul className="list-disc list-inside space-y-3 text-left">
                   <li>
                     <strong>Instant Results:</strong> Experience real-time GPA
                     and CGPA calculations with minimal effort.
@@ -90,7 +94,7 @@ export default function About() {
                   </p>
                 </div>
 
-                <ul className="list-disc list-inside space-y-3 text-left inline-block">
+                <ul className="list-disc list-inside space-y-3 text-left">
                   <li>
                     <strong>Elegant Design:</strong> Revel in a sleek dark/light
                     theme enriched with subtle animations and hover effects.
@@ -104,7 +108,7 @@ export default function About() {
               </div>
 
               {/* Developer Details */}
-              <div className="max-w-4xl text-white mt-12">
+              <div className="max-w-4xl text-white mt-12 mx-auto">
                 <h2 className="text-2xl font-semibold mb-4">
                   Meet the Developer
                 </h2>
