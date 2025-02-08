@@ -30,7 +30,7 @@ export default function About() {
             <div className="text-center px-4">
               {/* Header */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-wide">
-                Discover the Ultimate UET GPA &amp; CGPA Calculator ScoreStream
+                Ultimate UET GPA &amp; CGPA Calculator ScoreStream
               </h1>
 
               {/* Introduction */}
