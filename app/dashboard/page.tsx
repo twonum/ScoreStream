@@ -219,7 +219,10 @@ export default function Dashboard() {
           name="keywords"
           content="UET Dashboard, GPA Calculator, CGPA Calculator, ScoreStream, University of Engineering and Technology Lahore, academic progress, secure data"
         />
-        <link rel="canonical" href="https://www.example.com/dashboard" />
+        <link
+          rel="canonical"
+          href="https://scorestream.onrender.com/dashboard"
+        />
       </Head>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 p-8">
         <BackButton />
