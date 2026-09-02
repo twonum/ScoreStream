@@ -41,6 +41,21 @@ export type ApiResponse = {
   data?: any;
 };
 
+// Mapping from letter grade to its numeric value
+const GRADE_VALUES: Record<string, number> = {
+  "A+": 4,
+  A: 4,
+  "A-": 3.7,
+  "B+": 3.3,
+  B: 3,
+  "B-": 2.7,
+  "C+": 2.3,
+  C: 2,
+  "C-": 1.7,
+  D: 1,
+  F: 0,
+};
+
 // Default semester to initialize the calculator state
 const defaultSemester: SemesterType = {
   id: "semester-1",
@@ -91,43 +106,25 @@ export default function Calculator({ setCalculationData }: CalculatorProps) {
   };
 
   // -----------------------
-  // Grade Values and Calculation Logic
+  // Calculation Logic
   // -----------------------
-
-  // Mapping from letter grade to its numeric value
-  const gradeValues: { [key: string]: number } = {
-    "A+": 4,
-    A: 4,
-    "A-": 3.7,
-    "B+": 3.3,
-    B: 3,
-    "B-": 2.7,
-    "C+": 2.3,
-    C: 2,
-    "C-": 1.7,
-    D: 1,
-    F: 0,
-  };
 
   /**
    * Calculate GPA for a given list of subjects.
    */
-  const calculateGPA = useCallback(
-    (subjects: Subject[]): number => {
-      let totalCredits = 0;
-      let totalPoints = 0;
-      subjects.forEach((subject) => {
-        // Only include subjects with a valid name and credit > 0
-        if (subject.credit > 0 && subject.name.trim()) {
-          const gradePoint = gradeValues[subject.grade] ?? 0;
-          totalCredits += subject.credit;
-          totalPoints += subject.credit * gradePoint;
-        }
-      });
-      return totalCredits ? totalPoints / totalCredits : 0;
-    },
-    [gradeValues]
-  );
+  const calculateGPA = useCallback((subjects: Subject[]): number => {
+    let totalCredits = 0;
+    let totalPoints = 0;
+    subjects.forEach((subject) => {
+      // Only include subjects with a valid name and credit > 0
+      if (subject.credit > 0 && subject.name.trim()) {
+        const gradePoint = GRADE_VALUES[subject.grade] ?? 0;
+        totalCredits += subject.credit;
+        totalPoints += subject.credit * gradePoint;
+      }
+    });
+    return totalCredits ? totalPoints / totalCredits : 0;
+  }, []);
 
   /**
    * Calculate overall CGPA using all semesters.
@@ -139,7 +136,7 @@ export default function Calculator({ setCalculationData }: CalculatorProps) {
       semester.subjects.forEach((subject) => {
         if (subject.credit > 0 && subject.name.trim()) {
           totalCredits += subject.credit;
-          totalPoints += subject.credit * (gradeValues[subject.grade] ?? 0);
+          totalPoints += subject.credit * (GRADE_VALUES[subject.grade] ?? 0);
         }
       });
     });
