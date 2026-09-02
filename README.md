@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UET GPA Calculator
 
-## Getting Started
+A simple, responsive GPA/CGPA calculator built with Next.js (App Router) and TypeScript. Enter subjects per semester, compute semester GPAs and overall CGPA, and save calculations to your account (Clerk auth + MongoDB persistence).
 
-First, run the development server:
+## Features
+- Add/remove semesters and subjects
+- Calculate semester GPA and overall CGPA (client-side)
+- Save calculation history to MongoDB (per-user, via Clerk authentication)
+- Local fallback/history in localStorage
+- Built with Tailwind CSS, Radix UI primitives, and SweetAlert2 for interactive prompts
 
+## Quickstart (development)
+1. Clone and install:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/<your-org>/ScoreStream.git
+cd ScoreStream
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Environment variables
+Create a `.env.local` file in the project root and provide the following (replace placeholders with real values):
+```
+MONGODB_URI="your-mongodb-connection-string"
+# Clerk / Auth (examples — replace with your actual Clerk config keys)
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_..."
+CLERK_SECRET_KEY="sk_..."
+# Any other Clerk env vars required by your Clerk setup
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the app:
+```bash
+npm run dev
+# then open http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Production
+Build and start:
+```bash
+npm run build
+npm run start
+```
+Deploy on Vercel or any platform that supports Next.js; be sure to set the same environment variables in your deployment settings.
 
-## Learn More
+## Project structure
+- `app/` — Next.js App Router pages & API folders (layout.tsx, page.tsx, globals.css)
+- `components/` — UI components (Calculator, Semester, Subject, NavBar, Footer)
+- `models/` — Mongoose model(s) for persistence (models/Calculation.ts)
+- `public/` — static assets (favicon)
+- `lib/` — utilities/helpers
+- `package.json` — scripts and dependencies
 
-To learn more about Next.js, take a look at the following resources:
+## Persistence & Authentication
+- Mongoose model: `models/Calculation.ts` (stores userId, semesters, result, timestamps)
+- Authentication: uses Clerk (`@clerk/nextjs`) to identify the logged-in user when saving calculations
+- API: the client POSTs to `/api/saveCalculation` to persist results — ensure your server connects to MongoDB using `MONGODB_URI`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage
+- Open the app and add semesters/subjects.
+- Fill subject name, credit hours, and choose letter grade.
+- Click "Calculate GPA/CGPA" to compute results.
+- Sign in (Clerk) and "Save Calculation" to persist to your account.
+- Use "Saved Calculations History" to view local saved entries or clear history.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contributing
+Contributions welcome. Please open an issue or PR with a clear description and tests if applicable.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+Specify a license (add LICENSE file) — e.g., MIT
